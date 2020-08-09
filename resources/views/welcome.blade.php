@@ -84,7 +84,7 @@
                     Laravel
                 </div>
                 
-                <div>
+                <div class="title m-b-md">
                     welcome you
                 </div>
 
