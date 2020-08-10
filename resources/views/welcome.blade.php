@@ -61,6 +61,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            
+            .tl {
+                color: red;
+            }
+            
         </style>
     </head>
     <body>
@@ -84,7 +89,7 @@
                     Laravel
                 </div>
                 
-                <div class="title m-b-md">
+                <div class="title m-b-md tl">
                     welcome you
                 </div>
 
