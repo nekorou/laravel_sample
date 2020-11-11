@@ -31,8 +31,8 @@ jobs:
           path: ~/.symfony/cache
           key: db
       - uses: symfonycorp/security-checker-action@v2
-        with:
-          disable-exit-code: 1
+        #with:
+        #  disable-exit-code: 1
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -42,7 +42,7 @@ jobs:
   slack:
     name: Slack
     needs: build # 最後のJOBを指定
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     if: always() # alwaysを指定
     steps:
       - uses: technote-space/workflow-conclusion-action@v1 # Workflow の結果を取得するアクション
