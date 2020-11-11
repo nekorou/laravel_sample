@@ -39,3 +39,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  slack:
+    name: Slack
+    needs: build # 最後のJOBを指定
+    runs-on: ubuntu-latest
+    if: always() # alwaysを指定
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v1 # Workflow の結果を取得するアクション
+      - uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ env.WORKFLOW_CONCLUSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
