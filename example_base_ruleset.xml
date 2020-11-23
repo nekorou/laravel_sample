@@ -17,6 +17,7 @@
 
 <!-- BadFunctions -->
 <!-- PHP functions that can lead to security issues -->
+<rule ref="vendor/pheromone/phpcs-security-audit/Security">
 <rule ref="Security.BadFunctions.Asserts"/>
 <rule ref="Security.BadFunctions.Backticks"/>
 <rule ref="Security.BadFunctions.CallbackFunctions"/>
@@ -47,6 +48,6 @@
 <!-- Misc -->
 <rule ref="Security.Misc.BadCorsHeader"/>
 <rule ref="Security.Misc.IncludeMismatch"/>
-
+</rule>
 </ruleset>
 
