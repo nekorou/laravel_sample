@@ -17,17 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: rito328/composite-run-steps-action-laravel-setup@v1
+    
+    - name: install php-security-audit
+      run: |
+        composer require --dev pheromone/phpcs-security-audit 
+        
     # 1. reviewdog の setup action を追加
     - uses: reviewdog/action-setup@v1
       with:
         reviewdog_version: latest
-    - name: lint
+    - name: php-security-audit
       env:
         # 2. reviewdog が コメントを書き込めるように token をセットする
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # 3. 構文チェックの結果を reviewdog へ渡す
-      run: ./vendor/bin/phpcs --report=emacs --standard=example.xml ./ | reviewdog -reporter=github-pr-review -efm='%f:%l:%c:%m'
+      run: ./vendor/bin/phpcs --report=emacs --standard=example_base_ruleset.xml test.php | reviewdog -reporter=github-pr-review -efm='%f:%l:%c:%m'
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
